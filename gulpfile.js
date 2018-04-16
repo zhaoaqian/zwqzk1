@@ -58,27 +58,27 @@ gulp.task("minJs", function() {
 })
 
 gulp.task("server", function() {
-    gulp.src("src")
-        .pipe(server({
-            port: 9090,
-            open: true,
-            livereload: true,
-            middleware: function(req, res, next) {
-                if (/\/list/g.test(req.url)) {
-                    res.end(JSON.stringify(data))
-                }
+            gulp.src("src")
+                .pipe(server({
+                        port: 9090,
+                        open: true,
+                        livereload: true,
+                        middleware: function(req, res, next) {
+                            if (/\/list/g.test(req.url)) {
+                                res.end(JSON.stringify(data);
+                                }
 
-                next()
-            }
-        }))
-})
+                                next()
+                            }
+                        }))
+                })
 
-gulp.task("watch", function() {
-    gulp.watch("./src/index.html", ['htmlmin']);
-    gulp.watch("./src/css/index.scss", ["mincss"]);
-    gulp.watch("./src/js/*.js", ['minJs']);
-})
+        gulp.task("watch", function() {
+            gulp.watch("./src/index.html", ['htmlmin']);
+            gulp.watch("./src/css/index.scss", ["mincss"]);
+            gulp.watch("./src/js/*.js", ['minJs']);
+        })
 
-gulp.task("default", function(callback) {
-    sequence("clean", ["mincss", "htmlmin", "minJs", "copycss"], "watch", "server", callback)
-})
+        gulp.task("default", function(callback) {
+            sequence("clean", ["mincss", "htmlmin", "minJs", "copycss"], "watch", "server", callback)
+        })
