@@ -1,0 +1,1 @@
+$(function(){$(".footer ul li").on("click",function(){})});
